@@ -1,0 +1,41 @@
+{
+	"Gabe":{
+		"1":{
+			"speech": "Hello, my name is Gabe",
+			"flag": "2"
+		},
+		"2":{
+			"speech": "Don't talk much huh?",
+			"flag": "---end"
+		},
+		"-1":{
+			"speech": "Nothing left to say",
+			"flag": "---end"
+		}
+	},
+	"Alex": {
+		"1":{
+			"speech": "Sup, the names Alex. Just moved here.",
+			"flag": "2"
+		},
+		"2":{
+			"speech": "Sorry, I've got to get my stuff in order. 
+			Would you be able to leave me be for a bit? Thanks.",
+			"flag": "---end"
+		},
+		"-1": {
+			"speech": "Please leave me be...",
+			"flag": "---end"
+		}
+	},
+	"Abby": {
+		"1":{
+			"speech": "Hi...",
+			"flag": "---end"
+		},
+		"-1": {
+			"speech": "...",
+			"flag": "---end"
+		}
+	}
+}

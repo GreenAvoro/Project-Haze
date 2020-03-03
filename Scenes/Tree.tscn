@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Images/tf_jungle_tileset.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Tree.gd" type="Script" id=2]
+[ext_resource path="res://Images/select.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 26.5436, 24.4236 )
+
+[node name="Tree" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="SpriteTop" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 240, 80, 80, 80 )
+
+[node name="SpriteBottom" type="Sprite" parent="."]
+position = Vector2( 0, 32 )
+z_index = -1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 160, 48, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 32 )
+shape = SubResource( 1 )
+
+[node name="Clickable" type="Area2D" parent="." groups=[
+"selectable",
+"trees",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickable"]
+visible = false
+position = Vector2( 1.65623, 15.6422 )
+shape = SubResource( 2 )
+
+[node name="select" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1.69571, 15.468 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
+[connection signal="input_event" from="Clickable" to="." method="_on_Clickable_input_event"]
+[connection signal="mouse_entered" from="Clickable" to="." method="_on_Clickable_mouse_entered"]
+[connection signal="mouse_exited" from="Clickable" to="." method="_on_Clickable_mouse_exited"]
