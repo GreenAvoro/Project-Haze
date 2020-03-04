@@ -10,7 +10,10 @@ extents = Vector2( 16, 8 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26.5436, 24.4236 )
 
-[node name="Tree" type="StaticBody2D"]
+[node name="Tree" type="StaticBody2D" groups=[
+"selectable",
+"trees",
+]]
 script = ExtResource( 2 )
 
 [node name="SpriteTop" type="Sprite" parent="."]
@@ -30,10 +33,7 @@ region_rect = Rect2( 256, 160, 48, 16 )
 position = Vector2( 0, 32 )
 shape = SubResource( 1 )
 
-[node name="Clickable" type="Area2D" parent="." groups=[
-"selectable",
-"trees",
-]]
+[node name="Clickable" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Clickable"]
 visible = false
@@ -45,6 +45,5 @@ visible = false
 position = Vector2( 1.69571, 15.468 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 3 )
-[connection signal="input_event" from="Clickable" to="." method="_on_Clickable_input_event"]
 [connection signal="mouse_entered" from="Clickable" to="." method="_on_Clickable_mouse_entered"]
 [connection signal="mouse_exited" from="Clickable" to="." method="_on_Clickable_mouse_exited"]

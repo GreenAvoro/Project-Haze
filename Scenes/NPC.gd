@@ -49,15 +49,14 @@ func _physics_process(delta):
 			move_timer = 0
 		if global_position.distance_to(target_global_pos) < DISTANCE_THRESHOLD:
 			moving = false
-			$AnimatedSprite.animation = "idle"
+			$AnimatedSprite.animation = "idle_down"
 			$AnimatedSprite.playing = false
 		if moving:
 			move_to(target_global_pos)
 			if _velocity.x < 0:
-				$AnimatedSprite.flip_h = true
+				$AnimatedSprite.animation = "run_left"
 			else:
-				$AnimatedSprite.flip_h = false
-			$AnimatedSprite.animation = "run"
+				$AnimatedSprite.animation = "run_right"
 			$AnimatedSprite.playing = true
 			_velocity = move_and_slide(_velocity)
 		else:

@@ -30,31 +30,28 @@ func _process(delta):
 func add_fuel(p):
 	fuel += p.wood
 	p.wood = 0
-
+	
+func click(player):
+	add_fuel(player)
 
 func _on_Clickable_mouse_entered():
 	mouse_over = true
-
-
+	if has_node("/root/Overworld/Player"):
+		get_node("/root/Overworld/Player").clickable_object_enter(self)
+	else:
+		print("Can't find Player!")
+	
 func _on_Clickable_mouse_exited():
 	mouse_over = false
-
-
-func _on_Clickable_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			print("Click pressed")
-			emit_signal("clicked", self)
-		else:
-			print("Click released")
-
+	if has_node("/root/Overworld/Player"):
+		get_node("/root/Overworld/Player").clickable_object_exit(self)
+	else:
+		print("Can't find Player!")
 
 func _on_Warmth_body_entered(body):
 	if body.name == "Player":
 		bodies_present.append(body)
-		
-
-
+	
 func _on_Warmth_body_exited(body):
 	for bod in bodies_present:
 		if bod == body:

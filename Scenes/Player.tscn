@@ -21,10 +21,10 @@ border_color = Color( 0.603922, 0.603922, 0.603922, 1 )
 cull_mode = 1
 polygon = PoolVector2Array( -3.25056, -4.60777, 4.57244, -4.71795, 5.78446, 2.1134, 5.66157, 10.9215, -3.25056, 9.49567, -5.01349, 2.99487 )
 
-[sub_resource type="CircleShape2D" id=14]
-radius = 5.0
+[sub_resource type="CircleShape2D" id=4]
+radius = 6.68825
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=5]
 radius = 32.0
 
 [node name="Player" type="KinematicBody2D"]
@@ -171,20 +171,21 @@ occluder = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
-animation = "idle"
+animation = "idle_up"
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.250343, 7.32586 )
-shape = SubResource( 14 )
+position = Vector2( -0.0494388, 9.42432 )
+shape = SubResource( 4 )
 
 [node name="Reach" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Reach"]
-shape = SubResource( 13 )
+shape = SubResource( 5 )
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="area_entered" from="Reach" to="." method="_on_Reach_area_entered"]
 [connection signal="area_exited" from="Reach" to="." method="_on_Reach_area_exited"]
